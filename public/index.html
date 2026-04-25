@@ -16,9 +16,11 @@
         <div>
             <textarea id="msg" placeholder="Type message..." autofocus></textarea>
             <input type="file" id="file" multiple hidden>
-            <button onclick="pickFile()" title="Attach Files">📎</button>
-            <button onclick="send()">Send</button>
-            <button onclick="clearAll()" title="Clear All">🧹</button>
+            <div id="buttons">
+                <button onclick="pickFile()" title="Attach Files">📎</button>
+                <button onclick="send()">Send</button>
+                <button onclick="clearAll()" title="Clear All">🧹</button>
+            </div>
         </div>
     </div>
     <script src="app.js"></script>

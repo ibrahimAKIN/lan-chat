@@ -84,6 +84,12 @@ textarea {
     border: none;
     border-radius: 8px;
     padding: 10px;
+    height: 100px;
+}
+
+#buttons {
+    display: flex;
+    gap: 8px;
 }
 
 button {
@@ -113,4 +119,21 @@ button {
     font-size: 12px;
     cursor: pointer;
     gap: 6px;
+}
+
+@media (orientation: portrait) {
+    textarea {
+        height: 150px;
+    }
+
+    #buttons {
+        flex-direction: column;
+    }
+}
+
+@media (hover: none), (hover: on-demand) {
+    .msg .del {
+        z-index: 0;
+        opacity: 1;
+    }
 }
