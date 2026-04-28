@@ -29,6 +29,14 @@ function uuid() {
     });
 }
 
+function linkify(text) {
+    const urlRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
+    return text.replace(urlRegex, url => {
+        const safe = url.replace(/"/g, "&quot;");
+        return `<a href="${safe}" target="_blank" rel="noopener noreferrer">${safe}</a>`;
+    });
+}
+
 function render(msg) {
     const side = msg.from === id;
     const div = document.createElement('div');
@@ -39,7 +47,7 @@ function render(msg) {
         div.innerHTML = `<a href='/download/${msg.file}/${encodeURIComponent(msg.name)}'>${msg.name}</a>`;
     }
     else {
-        div.textContent = msg.text;
+        div.innerHTML = linkify(msg.text);
     }
 
     if (side) {
